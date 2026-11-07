@@ -258,6 +258,21 @@ document.getElementById("message")
 .addEventListener("keydown", function(event) {
   if (event.key === "Enter") sendMessage();
 });
+  function bratKonus(metin) {
+  if (!("speechSynthesis" in window)) {
+    alert("Ses desteği bulunamadı.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const ses = new SpeechSynthesisUtterance(metin);
+  ses.lang = "tr-TR";
+  ses.rate = 1;
+  ses.pitch = 1;
+
+  window.speechSynthesis.speak(ses);
+  }
 </script>
 
 </body>
